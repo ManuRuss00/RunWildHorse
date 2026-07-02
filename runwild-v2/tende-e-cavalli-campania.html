@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tende & Cavalli — Weekend in Campania · Run Wild</title>
+<meta name="description" content="Tende & Cavalli · Weekend a cavallo a Caserta Vecchia, Campania. Trekking alle pendici dei monti, cena in agriturismo con prodotti bio a km 0 e notte in tenda. 4/5 luglio 2026, 14 posti. Aperto anche a principianti.">
+<link rel="icon" type="image/png" href="assets/horse_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* --- stili specifici pagina experience --- */
+  .page-hero{position:relative;height:86svh;min-height:560px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  .page-hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(31,42,31,.55) 0%,rgba(31,42,31,.35) 45%,var(--forest) 100%)}
+  .page-hero .inner{position:relative;z-index:2;padding:0 1.4rem;max-width:840px}
+  .page-hero .kicker{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sand);margin-bottom:1.1rem}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.08}
+  .page-hero h1 em{font-style:italic;color:var(--sand)}
+  .page-hero .meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.8rem}
+  .chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(243,237,225,.35);border-radius:999px;padding:.55rem 1.1rem;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);backdrop-filter:blur(4px);background:rgba(31,42,31,.25)}
+  .chip.accent{background:var(--sand);color:var(--forest-deep);border-color:var(--sand)}
+  .breadcrumb{position:absolute;top:5.4rem;left:1.6rem;z-index:3;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase}
+  .breadcrumb a{color:var(--fade);text-decoration:none}
+  .breadcrumb a:hover{color:var(--cream)}
+
+  .program{max-width:1100px;margin:0 auto}
+  .program .step{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:clamp(2.5rem,6vw,4.5rem);border:1px solid rgba(243,237,225,.1);border-radius:4px;overflow:hidden;background:var(--moss)}
+  @media(min-width:880px){.program .step{grid-template-columns:1fr 1fr}.program .step:nth-child(even) .media{order:2}}
+  .program .media{position:relative;min-height:340px;overflow:hidden}
+  .program .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+  .program .step:hover .media img{transform:scale(1.05)}
+  .program .media .loc{position:absolute;left:1.1rem;bottom:1rem;z-index:2;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);background:rgba(31,42,31,.55);padding:.45rem .9rem;border-radius:999px;backdrop-filter:blur(4px)}
+  .program .txt{padding:clamp(2.2rem,5vw,3.6rem);display:flex;flex-direction:column;justify-content:center}
+  .program .txt .when{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem}
+  .program .txt h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:1rem}
+  .program .txt p{font-size:1rem;line-height:1.85;color:var(--fade);max-width:46ch}
+  .program .txt ul.sched{list-style:none;margin-top:.4rem;display:flex;flex-direction:column;gap:.7rem}
+  .program .txt ul.sched li{display:flex;gap:.9rem;align-items:baseline;font-size:.97rem;line-height:1.6;color:var(--fade)}
+  .program .txt ul.sched li b{color:var(--sand);font-weight:400;flex:0 0 3.4rem;font-size:.8rem;letter-spacing:.08em}
+
+  .info-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.2rem}
+  @media(min-width:880px){.info-grid{grid-template-columns:1fr 1fr}}
+  .info-card{border:1px solid rgba(243,237,225,.12);border-radius:4px;padding:clamp(1.8rem,4vw,2.6rem);background:var(--moss)}
+  .info-card h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.6rem;margin-bottom:1.3rem;display:flex;align-items:center;gap:.7rem}
+  .info-card h3 .h-ico{width:22px;height:22px;color:var(--sand);flex:0 0 auto}
+  .info-card ul{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+  .info-card li{display:flex;gap:.8rem;align-items:baseline;font-size:.97rem;line-height:1.6;color:var(--cream)}
+  .info-card li::before{content:"—";color:var(--sand);flex:0 0 auto}
+  .info-card.muted li{color:var(--fade)}
+  .note-req{max-width:1100px;margin:1.2rem auto 0;border:1px dashed rgba(201,183,156,.5);border-radius:4px;padding:1.4rem 1.8rem;font-size:.95rem;line-height:1.7;color:var(--fade);display:flex;gap:.9rem;align-items:baseline}
+  .note-req b{color:var(--sand);font-weight:400}
+
+  .price-box{max-width:720px;margin:0 auto;text-align:center;border:1px solid rgba(201,183,156,.45);border-radius:4px;padding:clamp(2.5rem,6vw,4rem)}
+  .price-box .label{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem}
+  .price-box .price{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.2rem,9vw,4.6rem);line-height:1;margin-bottom:.6rem}
+  .price-box .per{font-size:.85rem;color:var(--fade);margin-bottom:1.8rem}
+  .price-box .spots{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--clay);margin-top:1.4rem}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="brand"><i class="h-ico"></i><b>Run Wild</b></span>
+  <div class="nav-links">
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#chi-siamo">Chi siamo</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#community">Community</a>
+  </div>
+  <a class="cta-nav" href="#prenota">Prenota il tuo posto</a>
+</nav>
+
+<header class="page-hero">
+  <img class="bg" src="assets/cm_hero.jpg" alt="Cavaliere nel bosco verde alle pendici dei monti di Caserta">
+  <p class="breadcrumb"><a href="index.html">Home</a> · <a href="index.html#experience">Experience</a> · Tende & Cavalli in Campania</p>
+  <div class="inner">
+    <p class="kicker reveal-up">Weekend · Campania</p>
+    <h1 class="reveal-up" style="transition-delay:.12s">Tende <em>&</em> cavalli<br>a Caserta Vecchia</h1>
+    <div class="meta-row reveal-up" style="transition-delay:.24s">
+      <span class="chip accent">4 / 5 Luglio 2026</span>
+      <span class="chip">Caserta Vecchia · Campania</span>
+      <span class="chip">14 posti</span>
+    </div>
+  </div>
+</header>
+
+<section class="split">
+  <div class="media reveal-up"><img src="assets/cm_panorama.jpg" alt="Panorama sulla pianura campana visto dalla sella"></div>
+  <div class="txt">
+    <p class="eyebrow"><i class="hoof-ico"></i> Il luogo</p>
+    <h2 class="reveal-up">Caserta Vecchia,<br>a un'ora da Napoli</h2>
+    <p class="reveal-up" style="transition-delay:.08s">Un luogo immerso nel verde, avvolto da montagne tranquille e raggiungibile in meno di un'ora da Napoli.</p>
+    <p class="reveal-up" style="transition-delay:.14s">Perfetto per chi cerca silenzio, aria fresca e paesaggi che rilassano.</p>
+  </div>
+</section>
+
+<section class="pad" id="programma">
+  <div class="ghead reveal-up"><p class="eyebrow"><i class="h-ico"></i> Il programma</p></div>
+  <h2 class="reveal-up" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,6vw,3rem);margin-bottom:.8rem">Un weekend tra i monti di Caserta</h2>
+  <p class="gsub reveal-up">trekking, agriturismo, tende e cibo a km 0</p>
+
+  <div class="program">
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/ts_gruppo.jpg" alt="Gruppo a cavallo in fila tra i prati"><span class="loc">Caserta Vecchia</span></div>
+      <div class="txt">
+        <p class="when">Il sabato</p>
+        <h3>Passeggiata verso l'agriturismo</h3>
+        <ul class="sched">
+          <li><b>16:30</b> Ritrovo al maneggio, preparazione cavalli e partenza</li>
+          <li><b>&nbsp;</b> Circa 2h30 di passeggiata alle tre andature</li>
+          <li><b>19:00</b> Arrivo all'agriturismo per la cena e preparazione delle tende</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/hl_camping.jpg" alt="Tende montate nel verde con la colazione pronta"><span class="loc">L'agriturismo</span></div>
+      <div class="txt">
+        <p class="when">Sabato · sera</p>
+        <h3>Cena bio e notte in tenda</h3>
+        <p>Tutto il cibo sarà a km 0, preparato con amore usando solo i prodotti che coltivano. Dopo cena, notte in tenda immersi nel verde.</p>
+      </div>
+    </article>
+
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/cm_sosta.jpg" alt="Sosta del gruppo nel bosco durante il trekking"><span class="loc">I monti di Caserta</span></div>
+      <div class="txt">
+        <p class="when">La domenica</p>
+        <h3>Secondo trekking e rientro</h3>
+        <ul class="sched">
+          <li><b>8:00</b> Sveglia</li>
+          <li><b>9:30</b> Colazione sia dolce che salata</li>
+          <li><b>10:30</b> Partenza per il secondo trekking a cavallo, poi ritorno a casa</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band">
+  <img class="bg" src="assets/hl_tramonto.jpg" alt="Ragazza a cavallo al tramonto tra le colline">
+  <i class="ico h-ico" aria-hidden="true"></i>
+  <p class="q reveal-up">Conoscerai <em>nuove persone</em> che amano i cavalli e la natura tanto quanto te.</p>
+</section>
+
+<section class="pad" id="dettagli">
+  <div class="ghead reveal-up"><p class="eyebrow"><i class="h-ico"></i> I dettagli</p></div>
+  <h2 class="reveal-up" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,6vw,3rem);margin-bottom:2.4rem">Cosa comprende il weekend</h2>
+  <div class="info-grid">
+    <div class="info-card reveal-up">
+      <h3><i class="h-ico"></i> Cosa è incluso</h3>
+      <ul>
+        <li>Trekking a cavallo per 2 giorni (6h complessive a cavallo)</li>
+        <li>1 colazione dolce e salata</li>
+        <li>1 cena con prodotti bio</li>
+        <li>Assicurazione e tessera maneggio</li>
+      </ul>
+    </div>
+    <div class="info-card muted reveal-up" style="transition-delay:.1s">
+      <h3><i class="h-ico"></i> Cosa non è incluso</h3>
+      <ul>
+        <li>Tende escluse</li>
+        <li>Mezzi di trasporto per arrivare in loco</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note-req reveal-up"><b>Requisiti</b> Per questo trekking non è richiesta esperienza alle tre andature: il weekend è aperto anche a principianti, ma è importante che non sia la vostra prima volta in sella!</p>
+</section>
+
+<section class="join pad" id="prenota">
+  <span class="ghost"></span>
+  <div class="price-box reveal-up">
+    <p class="label">Prezzo del pacchetto</p>
+    <p class="price">200€</p>
+    <p class="per">a persona</p>
+    <a class="wa-btn" href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+      Prenota su WhatsApp
+    </a>
+    <p class="spots">14 posti disponibili</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <img class="flogo" src="assets/logo_full.png" alt="Run Wild logo">
+      <p class="foot-tag">Esperienze nella natura, a cavallo e non solo.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contatti</h4>
+      <ul>
+        <li><a href="tel:+39000000000">Telefono — da inserire</a></li>
+        <li><a href="mailto:info@runwildhorse.it">Email — da inserire</a></li>
+        <li><a href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li class="piva">P. IVA — da inserire</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>FAQ</h4>
+      <ul>
+        <li>Serve esperienza a cavallo?</li>
+        <li>Posso partecipare da solo?</li>
+        <li>Che età hanno i partecipanti?</li>
+        <li>Dormiremo sempre in tenda?</li>
+        <li>Cosa succede in caso di maltempo?</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Link rapidi</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#community">Community</a></li>
+      </ul>
+      <a class="foot-ig" href="https://www.instagram.com/runwildhorse/" target="_blank" rel="noopener"><i class="h-ico"></i> @runwildhorse</a>
+    </div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Run Wild · Horse Riding Experience</div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+</a>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

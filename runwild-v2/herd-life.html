@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herd Life — Weekend di lavoro con le mandrie · Run Wild</title>
+<meta name="description" content="Herd Life · Weekend di lavoro con le mandrie a Cerveteri, Lazio. Due giorni tra bestiame, trekking a cavallo, cascate, camping e vita autentica. 12/13 settembre, 8 posti limitati.">
+<link rel="icon" type="image/png" href="assets/horse_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* --- stili specifici pagina experience --- */
+  .page-hero{position:relative;height:86svh;min-height:560px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  .page-hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .page-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(31,42,31,.55) 0%,rgba(31,42,31,.35) 45%,var(--forest) 100%)}
+  .page-hero .inner{position:relative;z-index:2;padding:0 1.4rem;max-width:840px}
+  .page-hero .kicker{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sand);margin-bottom:1.1rem}
+  .page-hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.08}
+  .page-hero h1 em{font-style:italic;color:var(--sand)}
+  .page-hero .meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.8rem}
+  .chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(243,237,225,.35);border-radius:999px;padding:.55rem 1.1rem;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);backdrop-filter:blur(4px);background:rgba(31,42,31,.25)}
+  .chip.accent{background:var(--sand);color:var(--forest-deep);border-color:var(--sand)}
+  .breadcrumb{position:absolute;top:5.4rem;left:1.6rem;z-index:3;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase}
+  .breadcrumb a{color:var(--fade);text-decoration:none}
+  .breadcrumb a:hover{color:var(--cream)}
+
+  .program{max-width:1100px;margin:0 auto}
+  .program .step{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:clamp(2.5rem,6vw,4.5rem);border:1px solid rgba(243,237,225,.1);border-radius:4px;overflow:hidden;background:var(--moss)}
+  @media(min-width:880px){.program .step{grid-template-columns:1fr 1fr}.program .step:nth-child(even) .media{order:2}}
+  .program .media{position:relative;min-height:340px;overflow:hidden}
+  .program .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+  .program .step:hover .media img{transform:scale(1.05)}
+  .program .media .loc{position:absolute;left:1.1rem;bottom:1rem;z-index:2;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);background:rgba(31,42,31,.55);padding:.45rem .9rem;border-radius:999px;backdrop-filter:blur(4px)}
+  .program .txt{padding:clamp(2.2rem,5vw,3.6rem);display:flex;flex-direction:column;justify-content:center}
+  .program .txt .when{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem}
+  .program .txt h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:1rem}
+  .program .txt p{font-size:1rem;line-height:1.85;color:var(--fade);max-width:46ch}
+
+  .info-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.2rem}
+  @media(min-width:880px){.info-grid{grid-template-columns:1fr 1fr}}
+  .info-card{border:1px solid rgba(243,237,225,.12);border-radius:4px;padding:clamp(1.8rem,4vw,2.6rem);background:var(--moss)}
+  .info-card h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.6rem;margin-bottom:1.3rem;display:flex;align-items:center;gap:.7rem}
+  .info-card h3 .h-ico{width:22px;height:22px;color:var(--sand);flex:0 0 auto}
+  .info-card ul{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+  .info-card li{display:flex;gap:.8rem;align-items:baseline;font-size:.97rem;line-height:1.6;color:var(--cream)}
+  .info-card li::before{content:"—";color:var(--sand);flex:0 0 auto}
+  .info-card.muted li{color:var(--fade)}
+  .note-req{max-width:1100px;margin:1.2rem auto 0;border:1px dashed rgba(201,183,156,.5);border-radius:4px;padding:1.4rem 1.8rem;font-size:.95rem;line-height:1.7;color:var(--fade);display:flex;gap:.9rem;align-items:baseline}
+  .note-req b{color:var(--sand);font-weight:400}
+
+  .price-box{max-width:720px;margin:0 auto;text-align:center;border:1px solid rgba(201,183,156,.45);border-radius:4px;padding:clamp(2.5rem,6vw,4rem)}
+  .price-box .label{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sand);margin-bottom:.9rem}
+  .price-box .price{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.2rem,9vw,4.6rem);line-height:1;margin-bottom:.6rem}
+  .price-box .per{font-size:.85rem;color:var(--fade);margin-bottom:1.8rem}
+  .price-box .spots{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--clay);margin-top:1.4rem}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="brand"><i class="h-ico"></i><b>Run Wild</b></span>
+  <div class="nav-links">
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#chi-siamo">Chi siamo</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#community">Community</a>
+  </div>
+  <a class="cta-nav" href="#prenota">Prenota il tuo posto</a>
+</nav>
+
+<header class="page-hero">
+  <img class="bg" src="assets/hl_hero.jpg" alt="Cavaliere accompagna la mandria lungo un sentiero di campagna">
+  <p class="breadcrumb"><a href="index.html">Home</a> · <a href="index.html#experience">Experience</a> · Herd Life</p>
+  <div class="inner">
+    <p class="kicker reveal-up">Weekend · Herd Life</p>
+    <h1 class="reveal-up" style="transition-delay:.12s">Lavoro con <em>le mandrie</em></h1>
+    <div class="meta-row reveal-up" style="transition-delay:.24s">
+      <span class="chip accent">12 / 13 Settembre</span>
+      <span class="chip">Cerveteri · Lazio</span>
+      <span class="chip">Evento unico · 8 posti</span>
+    </div>
+  </div>
+</header>
+
+<section class="split">
+  <div class="media reveal-up"><img src="assets/hl_cerveteri.jpg" alt="Cavallo sdraiato su un prato al tramonto vicino Cerveteri"></div>
+  <div class="txt">
+    <p class="eyebrow"><i class="hoof-ico"></i> Il luogo</p>
+    <h2 class="reveal-up">Cerveteri,<br>terra etrusca</h2>
+    <p class="reveal-up" style="transition-delay:.08s">Cerveteri è uno dei luoghi più affascinanti del Lazio per chi ama storia, natura e borghi autentici. Nell'antichità era Caere, una delle più importanti città degli Etruschi.</p>
+    <p class="reveal-up" style="transition-delay:.14s">Ospita la celebre Necropoli della Banditaccia, patrimonio UNESCO, considerata una delle necropoli etrusche più grandi e meglio conservate al mondo. Si trova a circa 40 km da Roma e a pochi minuti dal mare.</p>
+  </div>
+</section>
+
+<section class="pad" id="programma">
+  <div class="ghead reveal-up"><p class="eyebrow"><i class="h-ico"></i> Il programma</p></div>
+  <h2 class="reveal-up" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,6vw,3rem);margin-bottom:.8rem">Due giorni di vita vera</h2>
+  <p class="gsub reveal-up">bestiame, cavalli, cascate, tende e latte appena munto</p>
+
+  <div class="program">
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/hl_mandrie.jpg" alt="Cavaliere guida la mandria tra i pascoli"><span class="loc">Cerveteri, Lazio</span></div>
+      <div class="txt">
+        <p class="when">Sabato · pomeriggio</p>
+        <h3>Il lavoro con le mandrie</h3>
+        <p>Lavoreremo con il bestiame per circa 2 ore, imparando le prime nozioni base della gestione delle mandrie, fianco a fianco con chi le accompagna ogni giorno.</p>
+      </div>
+    </article>
+
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/hl_camping.jpg" alt="Tende montate nella natura con la colazione pronta"><span class="loc">Cerveteri, Lazio</span></div>
+      <div class="txt">
+        <p class="when">Sabato · sera</p>
+        <h3>Notte in tenda, sotto le stelle</h3>
+        <p>Nessun hotel: monteremo le tende in natura e vivremo l'esperienza del camping. Cena conviviale con prodotti a km 0.</p>
+      </div>
+    </article>
+
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/hl_mungitura.jpg" alt="Mungitura delle capre a mano"><span class="loc">Cerveteri, Lazio</span></div>
+      <div class="txt">
+        <p class="when">Domenica · mattina</p>
+        <h3>La mungitura delle capre</h3>
+        <p>La mattina mungeremo le capre e poi faremo bollire il latte. La colazione più autentica che tu abbia mai fatto.</p>
+      </div>
+    </article>
+
+    <article class="step reveal-up">
+      <div class="media"><img src="assets/hl_cascate.jpg" alt="Cascate di Cerveteri con laghetto verde smeraldo"><span class="loc">Cascate di Cerveteri</span></div>
+      <div class="txt">
+        <p class="when">Domenica · giornata</p>
+        <h3>Trekking tra borghi e cascate</h3>
+        <p>Partiremo per un trekking a cavallo di circa 4 ore, passando per borghi etruschi e cascate. E avremo la possibilità di nuotare sotto le cascate, insieme ai cavalli.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band">
+  <img class="bg" src="assets/hl_nuoto.jpg" alt="Cavaliere a cavallo nell'acqua sotto le cascate di Cerveteri">
+  <i class="ico h-ico" aria-hidden="true"></i>
+  <p class="q reveal-up">Conoscerai <em>nuove persone</em> che amano i cavalli e la natura tanto quanto te.</p>
+</section>
+
+<section class="pad" id="dettagli">
+  <div class="ghead reveal-up"><p class="eyebrow"><i class="h-ico"></i> I dettagli</p></div>
+  <h2 class="reveal-up" style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,6vw,3rem);margin-bottom:2.4rem">Cosa comprende il weekend</h2>
+  <div class="info-grid">
+    <div class="info-card reveal-up">
+      <h3><i class="h-ico"></i> Cosa è incluso</h3>
+      <ul>
+        <li>2h di avvicinamento e lavoro con le mandrie</li>
+        <li>Trekking di 4h a cavallo tra cascate e borghi etruschi</li>
+        <li>3 pasti con prodotti a km 0: colazione, pranzo di 3 portate e cena</li>
+        <li>Tende incluse</li>
+        <li>Noleggio cavallo</li>
+        <li>Assicurazione</li>
+      </ul>
+    </div>
+    <div class="info-card muted reveal-up" style="transition-delay:.1s">
+      <h3><i class="h-ico"></i> Cosa non è incluso</h3>
+      <ul>
+        <li>Mezzi di trasporto per raggiungere la destinazione</li>
+        <li>Eventuale sacco a pelo da portare</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note-req reveal-up"><b>Requisiti</b> È richiesto un minimo di esperienza a cavallo: dovrai essere autonomo nelle tre andature (passo, trotto, galoppo).</p>
+</section>
+
+<section class="join pad" id="prenota">
+  <span class="ghost"></span>
+  <div class="price-box reveal-up">
+    <p class="label">Prezzo del pacchetto</p>
+    <p class="price">450€</p>
+    <p class="per">a persona · tutto incluso</p>
+    <a class="wa-btn" href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+      Prenota su WhatsApp
+    </a>
+    <p class="spots">Evento unico · solo 8 posti disponibili</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <img class="flogo" src="assets/logo_full.png" alt="Run Wild logo">
+      <p class="foot-tag">Esperienze nella natura, a cavallo e non solo.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contatti</h4>
+      <ul>
+        <li><a href="tel:+39000000000">Telefono — da inserire</a></li>
+        <li><a href="mailto:info@runwildhorse.it">Email — da inserire</a></li>
+        <li><a href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li class="piva">P. IVA — da inserire</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>FAQ</h4>
+      <ul>
+        <li>Serve esperienza a cavallo?</li>
+        <li>Posso partecipare da solo?</li>
+        <li>Che età hanno i partecipanti?</li>
+        <li>Dormiremo sempre in tenda?</li>
+        <li>Cosa succede in caso di maltempo?</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Link rapidi</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#community">Community</a></li>
+      </ul>
+      <a class="foot-ig" href="https://www.instagram.com/runwildhorse/" target="_blank" rel="noopener"><i class="h-ico"></i> @runwildhorse</a>
+    </div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Run Wild · Horse Riding Experience</div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="https://chat.whatsapp.com/IArELzHr4w1A6WsWyz7IqS?mode=gi_t&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+</a>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
